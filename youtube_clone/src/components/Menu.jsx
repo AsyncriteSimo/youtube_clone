@@ -17,6 +17,7 @@ import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined'
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined'
 import SettingsBrightnessOutlinedIcon from '@mui/icons-material/SettingsBrightnessOutlined'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
+import { Link } from 'react-router-dom'
 
 
 
@@ -24,10 +25,12 @@ function Menu({darkMode, setDarkMode}) {
   return (
     <Container>
         <Wrapper>
-            <Logo>
-                <Img src={logo} />
-                YouClone2.0
-            </Logo>
+            <Link to="/" style={{textDecoration: "none", color:"inherit"}} >
+                <Logo>
+                    <Img src={logo} />
+                    YouClone2.0
+                </Logo>
+            </Link>
 
             <Item>
                 <HomeIcon />
@@ -53,10 +56,12 @@ function Menu({darkMode, setDarkMode}) {
             <Hr />
             <Login>
                 Sign in to like videos, comment, and subscribe
-                <Button>
-                    <AccountCircleOutlinedIcon />
-                    SIGN IN
-                </Button>
+                <Link to='signin' style={{textDecoration: "none"}} >
+                    <Button>
+                        <AccountCircleOutlinedIcon />
+                        SIGN IN
+                    </Button>
+                </Link>
             </Login>
             <Hr />
 
@@ -100,7 +105,7 @@ function Menu({darkMode, setDarkMode}) {
             </Item>
             <Item onClick={()=>setDarkMode(!darkMode)} >
                 <SettingsBrightnessOutlinedIcon />
-                Light Mode
+                {darkMode ? "light" : "dark"}Mode
             </Item>
         </Wrapper>
     </Container>
@@ -111,7 +116,7 @@ export default Menu
 
 const Container = styled.div`
     flex: 1;
-    background-color: ${({theme}) =>theme.bg};
+    background-color: ${({theme}) =>theme.bgLighter};
     color: ${({theme}) =>theme.text};
     height: 100vh ;
     font-size: 14px;
@@ -142,6 +147,10 @@ const Item = styled.div`
     gap: 20px;
     cursor: pointer;
     padding: 7.5px 0px;
+
+    &:hover{
+        background-color: ${({theme}) =>theme.soft}
+    }
 `;
 
 const Hr = styled.hr`
