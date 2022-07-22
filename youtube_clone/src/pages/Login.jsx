@@ -98,4 +98,5 @@ const Links = styled.div`
 
 const Link = styled.span`
     margin-left: 30px;
+    cursor: pointer;
 `;
